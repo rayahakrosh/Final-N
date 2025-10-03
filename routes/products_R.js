@@ -32,3 +32,12 @@ const validateProject = (data) => {
     if (!data.description || data.description.length < 10) return "Description must be at least 10 characters long.";
     return null; 
 };
+router.get('/', (req, res) => {
+    res.json(projects);
+});
+
+router.get('/:id', (req, res) => {
+    const project = projects.find(p => p.id === req.params.id);
+    if (!project) return res.status(404).json({ message: "Project not found." });
+    res.json(project);
+});
