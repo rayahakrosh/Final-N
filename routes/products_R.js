@@ -41,3 +41,32 @@ router.get('/:id', (req, res) => {
     if (!project) return res.status(404).json({ message: "Project not found." });
     res.json(project);
 });
+router.post('/', (req, res) => {
+    upload(req, res, (err) => { 
+        if (err) return res.status(500).json({ message: "Server error during file upload." });
+
+        const validationError = validateProject(req.body);
+        
+        if (validationError) {
+          
+            if (req.file && fs.existsSync(req.file.path)) {
+                 fs.unlinkSync(req.file.path);
+            }
+            return res.status(400).json({ message: validationError });
+        }
+        
+     
+        const imageUrl = req.file ? 'images/' + req.file.filename : 'images/default-proj.jpg';
+
+        const newProject = {
+            id: uuidv4(), 
+            name: req.body.name,
+            description: req.body.description,
+            imageUrl: imageUrl, 
+            rating: 
+        };
+
+        projects.push(newProject);
+        res.status(201).json(newProject);
+    });
+});
