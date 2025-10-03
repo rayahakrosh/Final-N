@@ -106,3 +106,13 @@ router.delete('/:id', (req, res) => {
     
     res.sendStatus(204); 
 });
+router.post('/:id/rate', (req, res) => {
+    const project = projects.find(p => p.id === req.params.id);
+    if (!project) return res.status(404).json({ message: "Project not found for rating." });
+
+    project.rating += 1;
+    
+    res.json(project);
+});
+
+module.exports = router;
