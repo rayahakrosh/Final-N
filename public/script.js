@@ -1,11 +1,10 @@
 const API_BASE_URL = 'http://localhost:3000/api/projects'; 
 
 window.app = {
-    
     showView: (viewId) => {
         document.querySelectorAll('.view').forEach(view => view.style.display = 'none');
         if(viewId === 'crud-form-view') {
-             document.getElementById(viewId).style.display = 'flex'; 
+             document.getElementById(viewId).style.display = 'flex';
         } else {
              document.getElementById(viewId).style.display = 'block';
         }
@@ -43,7 +42,7 @@ window.app = {
                 <div class="card-content">
                     <h3>${project.name}</h3>
                     <p class="card-description">${project.description}</p>
-                    <p class="card-date">Due: 25/02/1998</p> <div class="card-footer">
+                    <p class="card-date">Due: 22/02/2024/p> <div class="card-footer">
                         <span class="rating-stars">${stars}</span>
                         <div class="action-buttons">
                             <button class="edit-btn" onclick="event.stopPropagation(); window.app.editProject('${project.id}')">Edit</button>
@@ -61,6 +60,7 @@ window.app = {
         window.app.showView('all-projects-view');
         window.app.fetchProjects(); 
     },
+    
     previewImage: (event) => {
         const reader = new FileReader();
         reader.onload = function() {
@@ -102,6 +102,7 @@ window.app = {
             alert('An error occurred while fetching project data for editing.');
         }
     },
+
     handleFormSubmission: async function(e) {
         e.preventDefault();
 

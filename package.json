@@ -4,7 +4,8 @@
   "description": "Full-Stack Project Rating System with File Upload",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"  },
+    "start": "nodemon index.js" 
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",

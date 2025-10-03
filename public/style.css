@@ -14,7 +14,7 @@ body {
 }
 
 .app-header {
-    background-color:rgb(237, 95, 185); 
+    background-color:rgba(239, 118, 138, 0.829); 
     color: white;
     padding: 30px 0;
     margin-bottom: 20px;
@@ -28,9 +28,9 @@ body {
 }
 
 .add-new-project-btn {
-    background-color: pink; 
+    background-color: rgba(239, 118, 138, 0.829); 
     color: white;
-    padding: 8px 15px;
+    padding: 20px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -54,7 +54,7 @@ hr {
 }
 
 .project-card {
-    background-color: #ffffff;
+    background-color: pink;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
     overflow: hidden;
@@ -66,7 +66,7 @@ hr {
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 15px rgba(255, 0, 0, 0.533);
 }
 
 .project-card img {
@@ -109,7 +109,7 @@ hr {
 }
 
 .rating-stars {
-    color: gold;
+    color: rgb(212, 185, 34);
     font-size: 1.5em;
     letter-spacing: 2px;
 }
@@ -135,7 +135,7 @@ hr {
 }
 
 .action-buttons .rate-btn { 
-    background-color: #ffc107; 
+    background-color: white; 
     color: #333;
 }
 
