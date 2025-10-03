@@ -99,3 +99,10 @@ router.put('/:id', (req, res) => {
         res.json(projects[projectIndex]);
     });
 });
+router.delete('/:id', (req, res) => {
+    const projectToDelete = projects.find(p => p.id === req.params.id);
+    if (!projectToDelete) return res.status(404).json({ message: "Project not found for deletion." });
+    projects = projects.filter(p => p.id !== req.params.id);
+    
+    res.sendStatus(204); 
+});
