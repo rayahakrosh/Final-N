@@ -63,10 +63,39 @@ router.post('/', (req, res) => {
             name: req.body.name,
             description: req.body.description,
             imageUrl: imageUrl, 
-            rating: 
+            rating: 0
         };
 
         projects.push(newProject);
         res.status(201).json(newProject);
+    });
+});
+
+router.put('/:id', (req, res) => {
+    upload(req, res, (err) => {
+        if (err) return res.status(500).json({ message: "error " });
+
+        const { id } = req.params;
+        const projectIndex = projects.findIndex(p => p.id === id);
+
+        if (projectIndex === -1) return res.status(404).json({ message: "Project not found." });
+
+        const validationError = validateProject(req.body);
+        if (validationError) return res.status(400).json({ message: validationError });
+        
+        let newImageUrl = projects[projectIndex].imageUrl;
+        
+        if (req.file) {
+            newImageUrl = 'images/' + req.file.filename;
+        } else if (req.body.existingImage) {
+            newImageUrl = req.body.existingImage;
+        }
+
+        projects[projectIndex].name = req.body.name || projects[projectIndex].name;
+        projects[projectIndex].description = req.body.description || projects[projectIndex].description;
+        projects[projectIndex].imageUrl = newImageUrl;
+       
+
+        res.json(projects[projectIndex]);
     });
 });
